@@ -31,6 +31,7 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
         itemCount: categoryMeals.length,
         itemBuilder: (ctx, inx) {
           return MealItem(
+            id: categoryMeals[inx].id,
             imageUrl: categoryMeals[inx].imageUrl,
             title: categoryMeals[inx].title,
             duration: categoryMeals[inx].duration,
