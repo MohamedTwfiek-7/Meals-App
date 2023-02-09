@@ -3,6 +3,10 @@ import 'package:meal_app/dummy_data.dart';
 
 class MealDetailScreen extends StatelessWidget {
   static const routeName = '/MealDetailScreen';
+  final Function toggelFavorites;
+  final Function isFavoriteMeal;
+
+  const MealDetailScreen(this.toggelFavorites,this.isFavoriteMeal);
 
   Widget buildTitle(context, title) {
     return Container(
@@ -72,8 +76,9 @@ class MealDetailScreen extends StatelessWidget {
                     children: [
                       ListTile(
                         leading: CircleAvatar(
-                          backgroundColor: Theme.of(context).colorScheme.primary,
-                          child: Text('#${inx+1}'),
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
+                          child: Text('#${inx + 1}'),
                         ),
                         title: Text(selectedMeals.steps[inx]),
                       ),
@@ -85,6 +90,10 @@ class MealDetailScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: ()=>toggelFavorites(mealID),
+        child: isFavoriteMeal(mealID)? const Icon(Icons.star) : const Icon(Icons.star_border),
       ),
     );
   }
